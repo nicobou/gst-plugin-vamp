@@ -126,7 +126,7 @@ gst_vamp_class_init (GstvampClass * klass)
 
   g_object_class_install_property (gobject_class, PROP_SILENT,
     g_param_spec_boolean ("silent", "Silent", "Produce verbose output ?",
-          FALSE, G_PARAM_READWRITE | GST_PARAM_CONTROLLABLE));
+			  FALSE, (GParamFlags) (G_PARAM_READWRITE | GST_PARAM_CONTROLLABLE)));
 
   GST_BASE_TRANSFORM_CLASS (klass)->transform_ip =
       GST_DEBUG_FUNCPTR (gst_vamp_transform_ip);
@@ -186,7 +186,7 @@ gst_vamp_transform_ip (GstBaseTransform * base, GstBuffer * outbuf)
     gst_object_sync_values (G_OBJECT (filter), GST_BUFFER_TIMESTAMP (outbuf));
 
   if (filter->silent == FALSE)
-    g_print ("I'm plugged, therefore I'm in.\n");
+    g_print ("I'm plugged, therefore I'm in. hehe\n");
   
   /* FIXME: do something interesting here.  This simply copies the source
    * to the destination. */
@@ -211,7 +211,6 @@ vamp_init (GstPlugin * vamp)
 
 /* gstreamer looks for this structure to register vamps
  *
- * FIXME:exchange the string 'Template vamp' with you vamp description
  */
 GST_PLUGIN_DEFINE (
     GST_VERSION_MAJOR,

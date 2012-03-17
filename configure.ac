@@ -18,7 +18,8 @@ dnl enable mainainer mode by default
 AM_MAINTAINER_MODE([enable])
 
 dnl check for tools (compiler etc.)
-AC_PROG_CC
+dnl AC_PROG_CC
+AC_PROG_CXX
 
 dnl required version of libtool
 LT_PREREQ([2.2.6])
@@ -58,6 +59,11 @@ PKG_CHECK_MODULES(GST, [
       or similar. The minimum version required is $GST_REQUIRED.
   ])
 ])
+
+PKG_CHECK_MODULES(VAMPHOST, vamp-hostsdk, have_vamphost=true, have_vamphost=false)
+if test "x${have_vamphost}" = "xfalse" ; then
+    AC_MSG_ERROR([missing vamp host development package])
+fi
 
 dnl check if compiler understands -Wall (if yes, add -Wall to GST_CFLAGS)
 AC_MSG_CHECKING([to see if compiler understands -Wall])

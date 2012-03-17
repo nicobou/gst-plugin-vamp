@@ -22,6 +22,10 @@
 #ifndef __GST_VAMP_H__
 #define __GST_VAMP_H__
 
+#include <vamp-hostsdk/PluginHostAdapter.h>
+#include <vamp-hostsdk/PluginInputDomainAdapter.h>
+#include <vamp-hostsdk/PluginLoader.h>
+
 #include <gst/gst.h>
 #include <gst/base/gstbasetransform.h>
 
