@@ -41,6 +41,7 @@
 #include <gst/controller/gstcontroller.h>
 
 #include "gstvamp.h"
+#include "vamp-host.h"
 
 GST_DEBUG_CATEGORY_STATIC (gst_vamp_debug);
 #define GST_CAT_DEFAULT gst_vamp_debug
@@ -204,6 +205,9 @@ vamp_init (GstPlugin * vamp)
 {
   /* initialize gst controller library */
   gst_controller_init(NULL, NULL);
+
+
+  enumeratePlugins(PluginInformationDetailed);
 
   return gst_element_register (vamp, "vamp", GST_RANK_NONE,
       GST_TYPE_VAMP);
